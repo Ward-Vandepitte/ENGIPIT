@@ -428,7 +428,6 @@ class RetainingWallCalculator:
         Returns:
             Active earth pressure coefficient Ka
         """
-        phi_rad = math.radians(friction_angle)
         Ka = math.tan(math.radians(45 - friction_angle / 2)) ** 2
         return Ka
     
@@ -443,7 +442,6 @@ class RetainingWallCalculator:
         Returns:
             Passive earth pressure coefficient Kp
         """
-        phi_rad = math.radians(friction_angle)
         Kp = math.tan(math.radians(45 + friction_angle / 2)) ** 2
         return Kp
     
