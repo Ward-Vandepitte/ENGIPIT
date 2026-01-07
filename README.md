@@ -1,10 +1,175 @@
-# ENGIPIT - VIKTOR Application
+# ENGIPIT - Geotechnical Foundation Design Toolset
 
-This template serves as a quickstart to start developing VIKTOR applications.
+A comprehensive VIKTOR application for rapid design calculations of foundation systems, specifically developed for civil engineers specialized in geotechnics.
 
-Please consult the [cloud-based development guide](https://docs.viktor.ai/docs/getting-started/installation/remote-development/) for a detailed explanation on how to setup your codespace.
+## 🎯 Project Overview
 
----
+ENGIPIT provides a complete toolset for designing and analyzing various foundation systems including:
+- **Shallow Foundations** - Bearing capacity and safety factor analysis
+- **Deep Foundations (Single Pile)** - End bearing and skin friction calculations
+- **Deep Foundations (Pile Groups)** - Group efficiency and load distribution
+- **Retaining Walls** - Earth pressure analysis using Rankine theory
+
+## ✨ Key Features
+
+### Foundation Types Supported
+
+1. **Shallow Foundation Design**
+   - Terzaghi bearing capacity calculations
+   - Bearing capacity factors (Nc, Nq, Nγ)
+   - Ultimate and allowable bearing capacity
+   - Applied pressure analysis
+   - Safety factor assessment
+
+2. **Single Pile Design**
+   - End bearing capacity calculations
+   - Skin friction capacity (driven and bored piles)
+   - Total pile capacity with safety factors
+   - Utilization ratio tracking
+
+3. **Pile Group Design**
+   - Group efficiency factors based on spacing
+   - Load distribution per pile
+   - Group ultimate and allowable capacity
+   - Average pile utilization
+
+4. **Retaining Wall Design**
+   - Active and passive earth pressure coefficients
+   - Total active force calculations
+   - Force location determination
+   - Surcharge load effects
+
+### Calculation Methods
+
+- **Terzaghi's Bearing Capacity Theory** for shallow foundations
+- **Classical Pile Theory** for deep foundations (end bearing + skin friction)
+- **Rankine Earth Pressure Theory** for retaining walls
+- Industry-standard safety factors (FOS = 3.0 for shallow, 2.5 for deep)
+
+### Interactive Visualizations
+
+Each foundation type includes visual representations:
+- Shallow foundations: Top view with dimensions
+- Single piles: Side view with ground level
+- Pile groups: Side view showing all piles
+- Retaining walls: Side view with pressure distribution
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- VIKTOR platform account (version 14.0.0 or higher)
+- Python 3.8+
+- Virtual environment (recommended)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ward-Vandepitte/ENGIPIT.git
+   cd ENGIPIT
+   ```
+
+2. Create and activate virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Usage
+
+1. Deploy the application to your VIKTOR workspace
+2. Select the foundation type you want to analyze
+3. Enter soil properties (unit weight, cohesion, friction angle)
+4. Enter foundation-specific parameters (dimensions, loads, etc.)
+5. View results in the "Results" tab
+6. View visualization in the "Foundation Visualization" tab
+
+## 📖 Documentation
+
+- **[DOCUMENTATION.md](DOCUMENTATION.md)** - Complete technical documentation including:
+  - Detailed feature descriptions
+  - Calculation methodologies
+  - Input/output specifications
+  - Design standards and safety factors
+  - Usage guidelines and best practices
+  - Future enhancement roadmap
+
+- **[APP_GOALS.md](APP_GOALS.md)** - Project objectives and end goals
+- **[AGENT_INSTRUCTIONS.md](AGENT_INSTRUCTIONS.md)** - Development guidelines and standards
+
+## 🧪 Testing
+
+The project includes comprehensive unit tests covering all calculation modules:
+
+```bash
+source venv/bin/activate
+python -m unittest test_app -v
+```
+
+**Test Coverage:**
+- 21 unit tests across all calculation modules
+- Validation against theoretical values
+- Integration tests for realistic scenarios
+- All tests passing ✓
+
+## 🏗️ Project Structure
+
+```
+ENGIPIT/
+├── app.py                    # Main VIKTOR application with all calculation modules
+├── test_app.py              # Comprehensive unit tests
+├── requirements.txt          # Python dependencies
+├── DOCUMENTATION.md         # Technical documentation
+├── README.md                # This file
+├── APP_GOALS.md            # Project goals and objectives
+├── AGENT_INSTRUCTIONS.md   # Development guidelines
+└── LICENSE                  # Project license
+```
+
+## 🔬 Technical Details
+
+### Calculation Modules
+
+1. **ShallowFoundationCalculator**
+   - `calculate_bearing_capacity_factors()` - Compute Nc, Nq, Nγ
+   - `calculate_ultimate_bearing_capacity()` - Terzaghi's equation
+   - `calculate_allowable_bearing_capacity()` - Apply safety factor
+   - `calculate_applied_pressure()` - Load/area calculation
+
+2. **DeepFoundationCalculator**
+   - `calculate_pile_end_bearing()` - Base resistance
+   - `calculate_pile_skin_friction()` - Shaft resistance
+   - `calculate_pile_capacity()` - Total capacity
+   - `calculate_pile_group_efficiency()` - Group effects
+
+3. **RetainingWallCalculator**
+   - `calculate_active_earth_pressure_coefficient()` - Ka
+   - `calculate_passive_earth_pressure_coefficient()` - Kp
+   - `calculate_total_active_force()` - Force and location
+
+### VIKTOR Integration
+
+- **Parametrization**: Dynamic input forms with conditional visibility
+- **DataView**: Structured result display with grouped data items
+- **PlotlyView**: Interactive 2D visualizations using Plotly
+
+## 🛣️ Roadmap
+
+Future enhancements planned:
+- Settlement analysis (immediate and consolidation)
+- Multi-layer soil profiles
+- Groundwater effects and buoyancy
+- Advanced loading (moment and horizontal loads)
+- Additional foundation types (mat, combined footings)
+- Code compliance modules (Eurocode 7, ACI 318)
+- Optimization algorithms for foundation sizing
+- Cost estimation and material takeoffs
 
 ## 📋 Important Documentation
 
@@ -21,19 +186,40 @@ These documents ensure:
 - ✅ High quality and maintainable code
 - ✅ Clear communication and collaboration
 
----
+## 🤝 Contributing
 
-## 🚀 Getting Started
-
-1. **Review Documentation**: Read `APP_GOALS.md` and `AGENT_INSTRUCTIONS.md`
-2. **Setup Environment**: Follow the VIKTOR cloud-based development guide
-3. **Understand Goals**: Identify which end goals your work will address
-4. **Follow Instructions**: Comply with all agent instructions during development
-
----
+Contributions are welcome! Please:
+1. Review [AGENT_INSTRUCTIONS.md](AGENT_INSTRUCTIONS.md) for development standards
+2. Ensure alignment with [APP_GOALS.md](APP_GOALS.md)
+3. Add tests for new functionality
+4. Update documentation as needed
+5. Follow PEP 8 coding standards
 
 ## 📚 Additional Resources
 
 - [VIKTOR Documentation](https://docs.viktor.ai/)
+- [Cloud-based Development Guide](https://docs.viktor.ai/docs/getting-started/installation/remote-development/)
 - [Project End Goals](APP_GOALS.md)
 - [Agent Instructions](AGENT_INSTRUCTIONS.md)
+
+## 📄 License
+
+See [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+This project implements classical geotechnical engineering theories:
+- Terzaghi's Bearing Capacity Theory
+- Rankine Earth Pressure Theory
+- Classical Pile Foundation Theory
+
+## 📞 Support
+
+For issues, questions, or contributions, please refer to the project repository or create an issue on GitHub.
+
+---
+
+**Status**: ✅ Active Development - First end goal achieved (toolset for foundation design calculations)
+
+*Last Updated: January 6, 2026*
+*Version: 1.0*
