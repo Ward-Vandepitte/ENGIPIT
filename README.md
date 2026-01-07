@@ -1,16 +1,42 @@
 # ENGIPIT - Geotechnical Foundation Design Toolset
 
-A comprehensive VIKTOR application for rapid design calculations of foundation systems, specifically developed for civil engineers specialized in geotechnics.
+A comprehensive VIKTOR application for rapid design calculations of foundation systems, specifically developed for civil engineers specialized in geotechnics. Now with integrated project management and soil investigation database.
 
 ## 🎯 Project Overview
 
 ENGIPIT provides a complete toolset for designing and analyzing various foundation systems including:
+- **Project Management** - Hierarchical project organization with team collaboration
+- **Soil Investigation Database** - Comprehensive borehole data management (inspired by bedrock repositories)
 - **Shallow Foundations** - Bearing capacity and safety factor analysis
 - **Deep Foundations (Single Pile)** - End bearing and skin friction calculations
 - **Deep Foundations (Pile Groups)** - Group efficiency and load distribution
 - **Retaining Walls** - Earth pressure analysis using Rankine theory
+- **Standards Compliance** - Fascicule 62 Titre V and other design standards
 
 ## ✨ Key Features
+
+### Project Management Structure (NEW)
+
+1. **Project Entity**
+   - Project information (name, number, client, location)
+   - Project team management (PM, geotechnical engineer, structural engineer)
+   - Status tracking (from investigation to construction)
+   - Timeline management
+
+2. **Soil Investigation Database**
+   - Complete geotechnical site investigation storage
+   - Multiple boreholes per project
+   - Detailed soil layer stratification
+   - Test results integration (SPT, CPT)
+   - Representative property calculations
+   - Visual soil profile displays
+   - Similar to bedrock repository concept
+
+3. **Foundation Design Integration**
+   - Link designs to soil investigations
+   - Automatic soil parameter retrieval
+   - Design history and version tracking
+   - Standards-based calculations
 
 ### Foundation Types Supported
 
@@ -92,6 +118,13 @@ Each foundation type includes visual representations:
 
 ## 📖 Documentation
 
+- **[PROJECT_MANAGEMENT.md](docs/PROJECT_MANAGEMENT.md)** - **NEW** Project management structure documentation:
+  - Entity hierarchy and architecture
+  - Soil investigation database design
+  - Usage workflows
+  - Fascicule 62 integration
+  - Comparison with bedrock repository concept
+
 - **[DOCUMENTATION.md](DOCUMENTATION.md)** - Complete technical documentation including:
   - Detailed feature descriptions
   - Calculation methodologies
@@ -105,31 +138,46 @@ Each foundation type includes visual representations:
 
 ## 🧪 Testing
 
-The project includes comprehensive unit tests covering all calculation modules:
+The project includes comprehensive unit tests covering all modules:
 
 ```bash
 source venv/bin/activate
+# Test foundation calculations
 python -m unittest test_app -v
+# Test project management models
+python -m unittest test_project_models -v
+# Run all tests
+python -m unittest discover -v
 ```
 
 **Test Coverage:**
-- 21 unit tests across all calculation modules
+- 21 unit tests for foundation calculation modules
+- 19 unit tests for project management models
+- Total: 40 tests (100% passing ✓)
 - Validation against theoretical values
 - Integration tests for realistic scenarios
-- All tests passing ✓
 
 ## 🏗️ Project Structure
 
 ```
 ENGIPIT/
-├── app.py                    # Main VIKTOR application with all calculation modules
-├── test_app.py              # Comprehensive unit tests
-├── requirements.txt          # Python dependencies
-├── DOCUMENTATION.md         # Technical documentation
-├── README.md                # This file
-├── APP_GOALS.md            # Project goals and objectives
-├── AGENT_INSTRUCTIONS.md   # Development guidelines
-└── LICENSE                  # Project license
+├── app.py                          # Foundation calculation modules
+├── project_models.py               # Project management data models (NEW)
+├── project_viktor.py               # VIKTOR entity structure (NEW)
+├── test_app.py                     # Foundation calculation tests
+├── test_project_models.py          # Project management tests (NEW)
+├── requirements.txt                # Python dependencies
+├── docs/
+│   ├── PROJECT_MANAGEMENT.md       # Project structure documentation (NEW)
+│   └── standards/                   # Design standards PDFs
+│       ├── fascicule_62_titre_v... # French geotechnical standard
+│       ├── SB260...                # Belgian standard
+│       └── ...                     # Other standards
+├── DOCUMENTATION.md               # Technical documentation
+├── README.md                      # This file
+├── APP_GOALS.md                  # Project goals and objectives
+├── AGENT_INSTRUCTIONS.md         # Development guidelines
+└── LICENSE                        # Project license
 ```
 
 ## 🔬 Technical Details
@@ -219,7 +267,12 @@ For issues, questions, or contributions, please refer to the project repository 
 
 ---
 
-**Status**: ✅ Active Development - First end goal achieved (toolset for foundation design calculations)
+**Status**: ✅ Active Development  
+**Version**: 2.0 (with Project Management)  
+**Progress**:
+- ✅ End Goal 1: Foundation design toolset (completed)
+- ✅ End Goal 2: Project management structure (completed)
+- 🔄 End Goal 3: Fascicule 62 Titre V integration (in progress)
 
-*Last Updated: January 6, 2026*
-*Version: 1.0*
+*Last Updated: January 7, 2026*
+*Version: 2.0*
