@@ -416,7 +416,6 @@ def create_example_project() -> GeotechnicalProject:
     This demonstrates the complete project structure and can be used
     for testing and documentation purposes.
     """
-    from datetime import datetime
     
     # Create project
     project = GeotechnicalProject(

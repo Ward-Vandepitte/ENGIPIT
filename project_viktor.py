@@ -5,7 +5,7 @@ This module defines the VIKTOR entity hierarchy for managing geotechnical projec
 with integrated soil investigation databases and foundation design calculations.
 """
 
-from viktor import ViktorController, File
+from viktor import ViktorController
 from viktor.parametrization import (
     ViktorParametrization, 
     Section, 
@@ -15,8 +15,7 @@ from viktor.parametrization import (
     DateField,
     TextAreaField,
     DynamicArray,
-    Text,
-    Table
+    Text
 )
 from viktor.views import (
     DataView, 
@@ -24,15 +23,11 @@ from viktor.views import (
     DataGroup, 
     DataItem,
     PlotlyView,
-    PlotlyResult,
-    TableView,
-    TableResult
+    PlotlyResult
 )
-from viktor.core import File, UserException
 import plotly.graph_objects as go
 from typing import List, Dict, Any, Optional
 from datetime import datetime
-import json
 
 from project_models import (
     GeotechnicalProject,
