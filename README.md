@@ -1,6 +1,6 @@
 # ENGIPIT - Geotechnical Foundation Design Toolset
 
-A comprehensive VIKTOR application for rapid design calculations of foundation systems, specifically developed for civil engineers specialized in geotechnics. Now with integrated project management and soil investigation database.
+A comprehensive application for rapid design calculations of foundation systems, specifically developed for civil engineers specialized in geotechnics. Now with integrated project management and soil investigation database.
 
 ## 🎯 Project Overview
 
@@ -84,7 +84,6 @@ Each foundation type includes visual representations:
 
 ### Prerequisites
 
-- VIKTOR platform account (version 14.0.0 or higher)
 - Python 3.8+
 - Virtual environment (recommended)
 
@@ -109,12 +108,11 @@ Each foundation type includes visual representations:
 
 ### Usage
 
-1. Deploy the application to your VIKTOR workspace
-2. Select the foundation type you want to analyze
-3. Enter soil properties (unit weight, cohesion, friction angle)
-4. Enter foundation-specific parameters (dimensions, loads, etc.)
-5. View results in the "Results" tab
-6. View visualization in the "Foundation Visualization" tab
+1. Use the project management models to organize your projects
+2. Create soil investigations with borehole data
+3. Link foundation designs to soil investigations
+4. Perform calculations using the foundation design modules
+5. Export results and generate reports
 
 ## 📖 Documentation
 
@@ -163,7 +161,6 @@ python -m unittest discover -v
 ENGIPIT/
 ├── app.py                          # Foundation calculation modules
 ├── project_models.py               # Project management data models (NEW)
-├── project_viktor.py               # VIKTOR entity structure (NEW)
 ├── test_app.py                     # Foundation calculation tests
 ├── test_project_models.py          # Project management tests (NEW)
 ├── requirements.txt                # Python dependencies
@@ -201,11 +198,13 @@ ENGIPIT/
    - `calculate_passive_earth_pressure_coefficient()` - Kp
    - `calculate_total_active_force()` - Force and location
 
-### VIKTOR Integration
+### Project Management Models
 
-- **Parametrization**: Dynamic input forms with conditional visibility
-- **DataView**: Structured result display with grouped data items
-- **PlotlyView**: Interactive 2D visualizations using Plotly
+- **GeotechnicalProject**: Complete project organization
+- **SoilInvestigation**: Soil investigation database
+- **Borehole**: Individual borehole with soil layers
+- **SoilLayer**: Layer-specific soil properties
+- **FoundationDesign**: Design data and results
 
 ## 🛣️ Roadmap
 
@@ -245,10 +244,9 @@ Contributions are welcome! Please:
 
 ## 📚 Additional Resources
 
-- [VIKTOR Documentation](https://docs.viktor.ai/)
-- [Cloud-based Development Guide](https://docs.viktor.ai/docs/getting-started/installation/remote-development/)
 - [Project End Goals](APP_GOALS.md)
 - [Agent Instructions](AGENT_INSTRUCTIONS.md)
+- [Project Management Documentation](docs/PROJECT_MANAGEMENT.md)
 
 ## 📄 License
 

@@ -48,10 +48,10 @@ The **Project** is the top-level entity that represents a complete geotechnical/
 - Enables project portfolio management
 - Facilitates team coordination
 
-**VIKTOR Implementation:**
-- Entity Type: `Project`
-- Controller: `ProjectController`
-- Parametrization: `ProjectParametrization`
+**Data Model:**
+- Class: `GeotechnicalProject`
+- Implementation: `project_models.py`
+- Type: Dataclass with full type hints
 
 ### 2. Soil Investigation Entity
 
@@ -69,10 +69,10 @@ The **Soil Investigation** entity represents a complete geotechnical site invest
 - Enable comparison between different investigation phases
 - Serve as authoritative source for soil parameters
 
-**VIKTOR Implementation:**
-- Entity Type: `SoilInvestigation` (child of Project)
-- Controller: `SoilInvestigationController`
-- Parametrization: `SoilInvestigationParametrization`
+**Data Model:**
+- Class: `SoilInvestigation`
+- Implementation: `project_models.py`
+- Parent: GeotechnicalProject
 
 **Database Features:**
 - Multiple soil investigations per project (for different phases)
@@ -97,20 +97,20 @@ The **Borehole** entity represents a single borehole location with detailed soil
 - Provide layer-specific properties for calculations
 - Document field investigation results
 
-**VIKTOR Implementation:**
-- Entity Type: `Borehole` (child of SoilInvestigation)
-- Controller: `BoreholeController`
-- Parametrization: `BoreholeParametrization`
+**Data Model:**
+- Class: `Borehole`
+- Implementation: `project_models.py`
+- Parent: SoilInvestigation
 
 **Features:**
-- Dynamic array of soil layers
-- Visual soil profile display
+- List of soil layers
+- Visual soil profile display support
 - Complete geotechnical properties per layer
 - Test results (SPT, CPT) integrated with layers
 
 ### 4. Soil Layer (Data Structure)
 
-**Soil Layers** are defined within each Borehole using a dynamic array structure.
+**Soil Layers** are defined within each Borehole as a list of SoilLayer objects.
 
 **Key Attributes:**
 - Depth range (top and bottom)
@@ -146,10 +146,10 @@ The **Foundation Design** entity represents a specific foundation calculation or
 - Generate design documentation
 - Maintain design history
 
-**VIKTOR Implementation:**
-- Entity Type: `FoundationDesign` (child of Project)
-- Controller: `FoundationDesignController`
-- Parametrization: `FoundationDesignParametrization`
+**Data Model:**
+- Class: `FoundationDesign`
+- Implementation: `project_models.py`
+- Parent: GeotechnicalProject
 
 **Features:**
 - Multiple foundation types (shallow, deep, retaining walls)
@@ -370,10 +370,10 @@ The soil investigation database implementation draws inspiration from the "bedro
    - Standards-based workflows
    - Automatic compliance checking
 
-3. **VIKTOR Platform Integration**
-   - Interactive visualizations
-   - User-friendly interface
-   - Cloud-based collaboration
+3. **Python-Based Implementation**
+   - Clean data models
+   - Type safety
+   - Easy integration
 
 ## Technical Implementation
 
@@ -383,9 +383,8 @@ The soil investigation database implementation draws inspiration from the "bedro
 ENGIPIT/
 ├── app.py                      # Original foundation calculations
 ├── project_models.py           # Data models (NEW)
-├── project_viktor.py           # VIKTOR entity structure (NEW)
 ├── test_app.py                 # Original tests
-├── test_project_models.py      # Project model tests (TO ADD)
+├── test_project_models.py      # Project model tests (NEW)
 ├── docs/
 │   ├── standards/              # Design standards PDFs
 │   └── PROJECT_MANAGEMENT.md   # This document
@@ -395,20 +394,18 @@ ENGIPIT/
 ### Dependencies
 
 The project management structure uses:
-- `viktor`: VIKTOR framework
 - `dataclasses`: Python data modeling
-- `plotly`: Visualizations
 - `typing`: Type hints
 - `datetime`: Date/time handling
-- `json`: Data serialization
+- `enum`: Enumerations
 
 ### Storage Approach
 
-VIKTOR entities store data using:
-1. **Parameters**: User-input data via parametrization
-2. **Entity Storage**: Persistent entity properties
-3. **Files**: Attached documents and reports
-4. **Parent-Child**: Hierarchical relationships
+Data can be stored using:
+1. **JSON serialization**: Using to_dict() methods
+2. **Database**: Any SQL or NoSQL database
+3. **Files**: Pickle or JSON files
+4. **In-memory**: For quick prototyping
 
 ## Best Practices
 

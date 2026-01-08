@@ -32,8 +32,8 @@ This quick start guide helps you get up and running with ENGIPIT's geotechnical 
 
 ### Step 1: Create a New Project
 
-1. **Open ENGIPIT** in your VIKTOR workspace
-2. **Create Project Entity**
+1. **Use the project models** to create a new project
+2. **Create a GeotechnicalProject instance**
 3. **Fill in project details**:
    - Project Name
    - Project Number
@@ -44,12 +44,13 @@ This quick start guide helps you get up and running with ENGIPIT's geotechnical 
    - Project Status
    - Timeline
 
-### Step 2: Navigate Your Project
+### Step 2: Access Your Project Data
 
-Once created, you'll see:
-- **Project Overview**: Summary of project info
-- **Child Entities**: Soil investigations and designs
-- **Status Dashboard**: Current status and timeline
+Once created, you can:
+- Access project properties using the data model
+- Add soil investigations and foundation designs
+- Serialize to JSON for storage
+- Query and analyze project data
 
 ---
 
@@ -57,7 +58,7 @@ Once created, you'll see:
 
 ### Step 1: Create Soil Investigation
 
-1. **Within your Project**, add Soil Investigation child entity
+1. **Create a SoilInvestigation instance** for your project
 2. **Fill in investigation details**:
    - Name (e.g., "Site Investigation - Phase 1")
    - Consultant name
@@ -67,7 +68,7 @@ Once created, you'll see:
 ### Step 2: Add Boreholes
 
 For each borehole location:
-1. Add Borehole child entity to Soil Investigation
+1. Create a Borehole instance
 2. Enter borehole information:
    - Name (e.g., "BH-01")
    - Location coordinates (X, Y)
@@ -86,7 +87,7 @@ For each borehole, add soil layers:
 
 ### Step 4: Set Representative Properties
 
-In Soil Investigation entity, set site-wide representative values for quick design use.
+Calculate and set site-wide representative values from your borehole data for quick design use.
 
 ---
 
@@ -94,7 +95,7 @@ In Soil Investigation entity, set site-wide representative values for quick desi
 
 ### Step 1: Create Foundation Design
 
-1. **Within your Project**, add Foundation Design child entity
+1. **Create a FoundationDesign instance** for your project
 2. **Fill in design info**:
    - Foundation name
    - Foundation type (shallow, deep, retaining wall)
@@ -103,8 +104,8 @@ In Soil Investigation entity, set site-wide representative values for quick desi
 
 ### Step 2: Link to Soil Data
 
-**Option A**: Use Project Investigation - automatic soil property retrieval  
-**Option B**: Manual Input - enter soil properties directly
+**Option A**: Link to existing SoilInvestigation - automatic property retrieval  
+**Option B**: Manual Input - enter soil properties directly in design parameters
 
 ### Step 3: Enter Design Parameters
 
@@ -115,7 +116,10 @@ Enter parameters based on foundation type:
 
 ### Step 4: Review Results
 
-View design summary, safety factors, and visualizations.
+Access and review:
+- Design calculations and results stored in the FoundationDesign object
+- Safety factors and utilization ratios
+- Design checks and compliance status
 
 ---
 
